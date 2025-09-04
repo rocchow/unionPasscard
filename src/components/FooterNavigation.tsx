@@ -124,10 +124,10 @@ export default function FooterNavigation() {
     // Admin mode navigation (4 icons + role switcher)
     const adminLinks = [
       { 
-        href: '/admin/scan', 
-        label: 'Scan QR', 
-        icon: ScanLine,
-        color: 'text-green-600'
+        href: '/reports', 
+        label: 'Reports', 
+        icon: BarChart3,
+        color: 'text-orange-600'
       },
       { 
         href: '/admin/transactions', 
@@ -136,16 +136,16 @@ export default function FooterNavigation() {
         color: 'text-purple-600'
       },
       { 
+        href: '/admin/scan', 
+        label: 'Scan QR', 
+        icon: ScanLine,
+        color: 'text-green-600'
+      },
+      { 
         href: '/admin/users', 
         label: 'User Manage', 
         icon: Users,
         color: 'text-blue-600'
-      },
-      { 
-        href: '/reports', 
-        label: 'Reports', 
-        icon: BarChart3,
-        color: 'text-orange-600'
       }
     ]
 
