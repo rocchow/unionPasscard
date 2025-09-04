@@ -132,7 +132,7 @@ function PurchaseContent() {
     alert(`Successfully purchased ${membership.name} for ${formatCurrency(membership.price)}!`)
     
     setPurchasing(false)
-    router.push('/app')
+    router.push('/myPasses')
   }
 
   if (loading) {

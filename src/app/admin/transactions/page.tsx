@@ -54,7 +54,7 @@ export default function AdminTransactionsPage() {
       
       // Check if user has admin privileges
       if (currentUser.role === 'customer') {
-        router.push('/app')
+        router.push('/myPasses')
         return
       }
       

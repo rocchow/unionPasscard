@@ -36,7 +36,7 @@ function VerifyContent() {
       } else {
         // Add a small delay to ensure session is fully established
         setTimeout(() => {
-          router.push('/app')
+          router.push('/myPasses')
         }, 500)
       }
     } catch (err) {

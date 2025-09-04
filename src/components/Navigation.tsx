@@ -103,8 +103,8 @@ export default function Navigation() {
     
     switch (user.role) {
       case 'customer':
-        // Customers see App in top nav, other links are in footer
-        return [{ href: '/app', label: 'My App', icon: User }]
+        // Customers see My Passes in top nav, other links are in footer
+        return [{ href: '/myPasses', label: 'My Passes', icon: User }]
       case 'staff':
         return [...staffLinks]
       case 'company_admin':
@@ -116,7 +116,7 @@ export default function Navigation() {
           { href: '/staff', label: 'Staff Portal', icon: Users }
         ]
       default:
-        return [{ href: '/app', label: 'My App', icon: User }]
+        return [{ href: '/myPasses', label: 'My Passes', icon: User }]
     }
   }
 

@@ -63,7 +63,7 @@ export default function ReportsPage() {
       
       // Check if user has staff+ privileges
       if (currentUser.role === 'customer') {
-        router.push('/app')
+        router.push('/myPasses')
         return
       }
       

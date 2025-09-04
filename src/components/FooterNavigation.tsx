@@ -96,16 +96,16 @@ export default function FooterNavigation() {
     // Customer mode navigation (4 icons)
     const customerLinks = [
       { 
+        href: '/myPasses', 
+        label: 'My Passes', 
+        icon: CreditCard,
+        color: 'text-blue-600'
+      },
+      { 
         href: '/discover', 
         label: 'Discover', 
         icon: Compass,
         color: 'text-emerald-600'
-      },
-      { 
-        href: '/memberships', 
-        label: 'My Passes', 
-        icon: CreditCard,
-        color: 'text-blue-600'
       },
       { 
         href: '/qr-code', 
@@ -186,7 +186,7 @@ export default function FooterNavigation() {
   const handleRoleSwitch = () => {
     if (isAdminMode) {
       // Switch to user mode
-      router.push('/app')
+      router.push('/myPasses')
     } else {
       // Switch to admin mode
       router.push('/reports')
