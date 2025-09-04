@@ -124,12 +124,11 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center">
               {/* UP Logo */}
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-sm">
                 <span className="text-white font-bold text-lg">UP</span>
               </div>
-              <span className="font-bold text-lg sm:text-xl text-gray-900">UnionPasscard</span>
             </Link>
           </div>
 

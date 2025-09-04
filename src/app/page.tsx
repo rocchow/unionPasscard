@@ -5,6 +5,13 @@ export default function Home() {
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
+        {/* Top Right Logo */}
+        <div className="flex justify-end mb-8">
+          <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg">
+            <span className="text-white font-bold text-xl">UP</span>
+          </div>
+        </div>
+        
         {/* Hero Section - Mobile First */}
         <div className="text-center">
           {/* Logo */}
