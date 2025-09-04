@@ -7,6 +7,12 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         {/* Hero Section - Mobile First */}
         <div className="text-center">
+          {/* Logo */}
+          <div className="flex justify-center mb-8">
+            <div className="w-20 h-20 bg-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+              <span className="text-white font-bold text-3xl">UP</span>
+            </div>
+          </div>
           <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl leading-tight">
             Welcome to{' '}
             <span className="text-blue-600 block sm:inline">UnionPasscard</span>
