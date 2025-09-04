@@ -220,7 +220,7 @@ export async function getUserVenues(userId: string): Promise<Array<{
       .in('company_id', companyIds)
       
     if (companyVenues) {
-      companyVenues.forEach(venue => {
+      companyVenues.forEach((venue: any) => {
         // Don't duplicate venues already added
         if (!venues.find(v => v.id === venue.id)) {
           venues.push({

@@ -202,7 +202,7 @@ export default function FooterNavigation() {
         {
           href: '#',
           label: 'Switch to Admin',
-          icon: ShieldCheck,
+          icon: User,
           color: 'text-purple-600',
           isRoleSwitch: true
         }
