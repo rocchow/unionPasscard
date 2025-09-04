@@ -3,22 +3,15 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { 
-  QrCode, 
   Users, 
   TrendingUp,
-  Clock,
-  Building,
   CreditCard,
   ArrowRight,
   Loader2,
-  Calendar,
   DollarSign,
-  BarChart3,
-  Activity,
-  Target,
-  Zap
+  Activity
 } from 'lucide-react'
-import { getCurrentUser, type AuthUser, hasRole } from '@/lib/auth'
+import { getCurrentUser, type AuthUser } from '@/lib/auth'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import Link from 'next/link'
 
@@ -257,51 +250,6 @@ export default function ReportsPage() {
               </div>
               <div className="text-sm text-gray-600">Revenue This Week</div>
             </div>
-          </div>
-        </div>
-
-        {/* Quick Actions for Different Roles */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {/* Always available for staff+ */}
-            <Link
-              href="/staff/scan"
-              className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
-            >
-              <QrCode className="w-8 h-8 text-blue-600 mb-2" />
-              <span className="text-sm font-medium text-gray-900">Scan QR</span>
-            </Link>
-            
-            <Link
-              href="/admin/transactions"
-              className="flex flex-col items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
-            >
-              <BarChart3 className="w-8 h-8 text-green-600 mb-2" />
-              <span className="text-sm font-medium text-gray-900">All Transactions</span>
-            </Link>
-
-            {/* Admin+ only */}
-            {hasRole(user?.role || 'customer', 'company_admin') && (
-              <Link
-                href="/admin/users"
-                className="flex flex-col items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors"
-              >
-                <Users className="w-8 h-8 text-purple-600 mb-2" />
-                <span className="text-sm font-medium text-gray-900">Manage Users</span>
-              </Link>
-            )}
-
-            {/* Super Admin only */}
-            {user?.role === 'super_admin' && (
-              <Link
-                href="/admin/settings"
-                className="flex flex-col items-center p-4 bg-orange-50 rounded-lg hover:bg-orange-100 transition-colors"
-              >
-                <Zap className="w-8 h-8 text-orange-600 mb-2" />
-                <span className="text-sm font-medium text-gray-900">System Settings</span>
-              </Link>
-            )}
           </div>
         </div>
 
