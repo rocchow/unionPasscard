@@ -8,7 +8,6 @@ import {
   QrCode, 
   History,
   Compass,
-  ShieldCheck,
   User,
   ScanLine,
   Users,
@@ -149,7 +148,7 @@ export default function FooterNavigation() {
       }
     ]
 
-    // Super admin gets additional permissions link
+    // Super admin links (same as admin, permissions accessible via direct URL)
     const superAdminLinks = [
       { 
         href: '/reports', 
@@ -168,12 +167,6 @@ export default function FooterNavigation() {
         label: 'Scan QR', 
         icon: ScanLine,
         color: 'text-green-600'
-      },
-      { 
-        href: '/admin/permissions', 
-        label: 'Permissions', 
-        icon: ShieldCheck,
-        color: 'text-red-600'
       },
       { 
         href: '/admin/users', 

@@ -105,6 +105,15 @@ export function addSecurityHeaders(response: NextResponse): NextResponse {
   return response
 }
 
+// Helper function to check if user has required role
+export function hasRole(
+  user: { role: string } | null, 
+  allowedRoles: string[]
+): boolean {
+  if (!user) return false
+  return allowedRoles.includes(user.role)
+}
+
 // Audit logging
 export function auditLog(action: string, userId: string, details?: Record<string, unknown>) {
   const timestamp = new Date().toISOString()
