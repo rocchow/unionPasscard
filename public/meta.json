@@ -1,0 +1,8 @@
+{
+  "name": "UnionPasscard",
+  "short_name": "UnionPasscard",
+  "description": "Universal Membership System",
+  "version": "1.0.0",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,16 @@
+# Bun configuration file
+# This enables you to use `bun` instead of `npm` for faster package management
+
+[install]
+# Use exact versions for better reproducibility
+exact = true
+
+# Cache packages globally for faster installs
+cache = true
+
+# Automatically install peer dependencies
+auto = true
+
+[run]
+# Enable faster script execution
+shell = "sh"
