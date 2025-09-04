@@ -37,6 +37,7 @@ export default function ScanToBuyPage() {
       validity: string;
       benefits: string[];
     };
+    purchased?: boolean;
     error?: string;
   } | null>(null)
 

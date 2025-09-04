@@ -27,6 +27,8 @@ export default function AdminScanPage() {
       name: string;
       email: string;
       phone: string;
+      membership: string;
+      balance: number;
       passes: Array<{
         name: string;
         company: string;
@@ -34,6 +36,12 @@ export default function AdminScanPage() {
         expires: string;
       }>;
     };
+    transaction?: {
+      amount: number;
+      description: string;
+      venue: string;
+    };
+    processed?: boolean;
     error?: string;
   } | null>(null)
 
@@ -68,8 +76,14 @@ export default function AdminScanPage() {
         success: true,
         customer: {
           name: 'John Smith',
+          email: 'john.smith@email.com',
+          phone: '+1 (555) 123-4567',
           membership: 'SGV Premium',
-          balance: 125.50
+          balance: 125.50,
+          passes: [
+            { name: 'SGV Premium', company: 'SGV Entertainment', status: 'Active', expires: '2024-12-31' },
+            { name: 'Coffee Club', company: 'Blue Moon Café', status: 'Active', expires: '2024-11-15' }
+          ]
         },
         transaction: {
           amount: 15.75,
