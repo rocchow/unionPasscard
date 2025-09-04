@@ -98,7 +98,7 @@ export async function GET(request: NextRequest) {
     }
 
     // SECURITY: Only admins can view user lists
-    if (!['company_admin', 'super_admin'].includes(currentUser.role)) {
+    if (!currentUser.role || !['company_admin', 'super_admin'].includes(currentUser.role)) {
       return NextResponse.json({ 
         error: 'Admin privileges required' 
       }, { status: 403 })

@@ -74,7 +74,7 @@ export function setDemoRoleOverride(role: UserRole) {
   if (typeof window !== 'undefined') {
     const userId = localStorage.getItem('demo_user_id')
     if (userId) {
-      localStorage.setItem(`role_override_${userId}`, role)
+      localStorage.setItem(`role_override_${userId}`, role as string)
       console.log(`🔧 Demo: Set role override to ${role}`)
     }
   }
@@ -161,7 +161,9 @@ export async function signOut() {
   return { error }
 }
 
-export function hasRole(userRole: UserRole, requiredRole: UserRole): boolean {
+export function hasRole(userRole: UserRole | null, requiredRole: UserRole | null): boolean {
+  if (!userRole || !requiredRole) return false
+  
   const roleHierarchy = {
     'customer': 0,
     'staff': 1,

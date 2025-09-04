@@ -81,7 +81,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if user has staff privileges
-    if (!['staff', 'company_admin', 'super_admin'].includes(currentUser.role)) {
+    if (!currentUser.role || !['staff', 'company_admin', 'super_admin'].includes(currentUser.role)) {
       return NextResponse.json({ error: 'Insufficient privileges' }, { status: 403 })
     }
 
@@ -175,7 +175,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Check if user has staff privileges
-    if (!['staff', 'company_admin', 'super_admin'].includes(currentUser.role)) {
+    if (!currentUser.role || !['staff', 'company_admin', 'super_admin'].includes(currentUser.role)) {
       return NextResponse.json({ error: 'Insufficient privileges' }, { status: 403 })
     }
 

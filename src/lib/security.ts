@@ -48,6 +48,12 @@ export async function withSecurity(
           'super_admin': 3
         }
         
+        if (!currentUser.role) {
+          return NextResponse.json({ 
+            error: 'User role not assigned' 
+          }, { status: 403 })
+        }
+        
         const userLevel = roleHierarchy[currentUser.role]
         const requiredLevel = roleHierarchy[config.requireRole]
         
@@ -107,10 +113,10 @@ export function addSecurityHeaders(response: NextResponse): NextResponse {
 
 // Helper function to check if user has required role
 export function hasRole(
-  user: { role: string } | null, 
+  user: { role: string | null } | null,
   allowedRoles: string[]
 ): boolean {
-  if (!user) return false
+  if (!user || !user.role) return false
   return allowedRoles.includes(user.role)
 }
 

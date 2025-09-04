@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
     if (currentUser.role === 'customer') {
       // Customers can only see their own transactions
       filteredTransactions = filteredTransactions.filter(t => t.customer_id === currentUser.id)
-    } else if (['staff', 'company_admin', 'super_admin'].includes(currentUser.role)) {
+    } else if (currentUser.role && ['staff', 'company_admin', 'super_admin'].includes(currentUser.role)) {
       // Staff can see all transactions, or filter by specific criteria
       if (userId) {
         filteredTransactions = filteredTransactions.filter(t => t.customer_id === userId)

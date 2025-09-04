@@ -64,7 +64,7 @@ export default function PermissionsPage() {
         return
       }
 
-      if (!hasRole(currentUser, ['super_admin'])) {
+      if (!currentUser.role || !hasRole(currentUser, ['super_admin'])) {
         router.push('/myPasses')
         return
       }
@@ -81,17 +81,32 @@ export default function PermissionsPage() {
   }, [router])
 
   const loadUsers = async () => {
-    const supabase = createSupabaseBrowserClient()
-    const { data, error } = await supabase
-      .from('users')
-      .select('*')
-      .order('full_name')
+    try {
+      const supabase = createSupabaseBrowserClient()
+      console.log('Attempting to load users...')
+      
+      const { data, error } = await supabase
+        .from('users')
+        .select('id, email, phone, full_name, role, created_at, updated_at, company_id, venue_id')
 
-    if (error) {
-      console.error('Error loading users:', error)
-    } else {
-      console.log('Loaded users:', data) // Debug log
-      setUsers(data || [])
+      if (error) {
+        console.error('Error loading users:', error)
+        console.error('Error details:', error.details, error.hint, error.message, error.code)
+        return
+      }
+
+      console.log('Successfully loaded users:', data)
+      
+      // Sort on client side to handle nulls properly
+      const sortedUsers = (data || []).sort((a: any, b: any) => {
+        const nameA = a.full_name || `User ${a.phone || a.email || 'Unknown'}`
+        const nameB = b.full_name || `User ${b.phone || b.email || 'Unknown'}`
+        return nameA.localeCompare(nameB)
+      })
+      
+      setUsers(sortedUsers)
+    } catch (err) {
+      console.error('Unexpected error loading users:', err)
     }
   }
 
