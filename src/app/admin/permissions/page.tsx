@@ -216,13 +216,13 @@ export default function PermissionsPage() {
                     }`}
                   >
                     <div className="font-medium text-gray-900">
-                      {userItem.full_name || 'Unnamed User'}
+                      {userItem.full_name || `User ${userItem.phone || userItem.email || 'Unknown'}`}
                     </div>
                     <div className="text-sm text-gray-500">
-                      {userItem.email || userItem.phone}
+                      {userItem.phone || userItem.email || 'No contact info'}
                     </div>
                     <div className="text-xs text-blue-600 mt-1">
-                      Role: {userItem.role}
+                      Role: {userItem.role || 'customer'}
                     </div>
                   </button>
                 ))}

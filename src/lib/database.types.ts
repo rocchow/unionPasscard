@@ -15,7 +15,7 @@ export interface Database {
           email: string | null
           phone: string | null
           full_name: string | null
-          role: 'customer' | 'staff' | 'company_admin' | 'super_admin'
+          role: 'customer' | 'staff' | 'company_admin' | 'super_admin' | null
           company_id: string | null
           venue_id: string | null
           created_at: string
@@ -26,7 +26,7 @@ export interface Database {
           email?: string | null
           phone?: string | null
           full_name?: string | null
-          role?: 'customer' | 'staff' | 'company_admin' | 'super_admin'
+          role?: 'customer' | 'staff' | 'company_admin' | 'super_admin' | null
           company_id?: string | null
           venue_id?: string | null
           created_at?: string
@@ -37,7 +37,7 @@ export interface Database {
           email?: string | null
           phone?: string | null
           full_name?: string | null
-          role?: 'customer' | 'staff' | 'company_admin' | 'super_admin'
+          role?: 'customer' | 'staff' | 'company_admin' | 'super_admin' | null
           company_id?: string | null
           venue_id?: string | null
           created_at?: string
