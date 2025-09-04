@@ -90,6 +90,7 @@ export default function PermissionsPage() {
     if (error) {
       console.error('Error loading users:', error)
     } else {
+      console.log('Loaded users:', data) // Debug log
       setUsers(data || [])
     }
   }
