@@ -83,8 +83,8 @@ export default function FooterNavigation() {
     return null
   }
 
-  // Don't show on auth pages
-  if (pathname.startsWith('/auth')) {
+  // Don't show on auth pages or landing page
+  if (pathname.startsWith('/auth') || pathname === '/') {
     return null
   }
 

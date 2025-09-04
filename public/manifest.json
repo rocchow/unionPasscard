@@ -36,23 +36,30 @@
   ],
   "shortcuts": [
     {
+      "name": "My Passes",
+      "short_name": "My Passes",
+      "description": "View and manage your passes",
+      "url": "/myPasses",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+    },
+    {
       "name": "QR Code",
-      "short_name": "QR Code",
+      "short_name": "QR Code", 
       "description": "Show your membership QR code",
       "url": "/qr-code",
       "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Memberships",
-      "short_name": "Memberships",
-      "description": "View your memberships",
-      "url": "/memberships",
+      "name": "Scan to Buy",
+      "short_name": "Scan to Buy",
+      "description": "Scan QR codes to purchase passes",
+      "url": "/scanToBuy",
       "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
     },
     {
       "name": "Transactions",
       "short_name": "Transactions",
-      "description": "View transaction history",
+      "description": "View transaction history", 
       "url": "/transactions",
       "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
     }

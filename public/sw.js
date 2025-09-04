@@ -1,12 +1,14 @@
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = `union-passcard-${CACHE_VERSION}`;
 const urlsToCache = [
   '/',
   '/auth/login',
-  '/dashboard',
-  '/qr-code',
-  '/memberships',
+  '/myPasses',
+  '/qr-code', 
+  '/scanToBuy',
   '/transactions',
+  '/discover',
+  '/reports',
   '/manifest.json'
 ];
 

@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import FooterNavigation from "@/components/FooterNavigation";
+import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -109,6 +110,7 @@ export default function RootLayout({
           {children}
         </main>
         <FooterNavigation />
+        <PWAInstallPrompt />
       </body>
     </html>
   );
