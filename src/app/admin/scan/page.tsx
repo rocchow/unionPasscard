@@ -97,10 +97,10 @@ export default function AdminScanPage() {
 
   const handleProcessTransaction = () => {
     // Process the transaction
-    setScanResult({
-      ...scanResult,
+    setScanResult(prev => prev ? {
+      ...prev,
       processed: true
-    })
+    } : null)
   }
 
   if (loading) {
@@ -192,10 +192,10 @@ export default function AdminScanPage() {
                       <User className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <div className="font-medium text-gray-900">{scanResult.customer.name}</div>
-                      <div className="text-sm text-gray-500">{scanResult.customer.membership}</div>
+                      <div className="font-medium text-gray-900">{scanResult.customer?.name}</div>
+                      <div className="text-sm text-gray-500">{scanResult.customer?.membership}</div>
                       <div className="text-sm text-green-600">
-                        Balance: {formatCurrency(scanResult.customer.balance)}
+                        Balance: {formatCurrency(scanResult.customer?.balance || 0)}
                       </div>
                     </div>
                   </div>
@@ -208,19 +208,19 @@ export default function AdminScanPage() {
                     <div className="flex justify-between">
                       <span className="text-gray-600">Amount:</span>
                       <span className="font-medium text-gray-900">
-                        {formatCurrency(scanResult.transaction.amount)}
+                        {formatCurrency(scanResult.transaction?.amount || 0)}
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Description:</span>
                       <span className="font-medium text-gray-900">
-                        {scanResult.transaction.description}
+                        {scanResult.transaction?.description}
                       </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Venue:</span>
                       <span className="font-medium text-gray-900">
-                        {scanResult.transaction.venue}
+                        {scanResult.transaction?.venue}
                       </span>
                     </div>
                   </div>

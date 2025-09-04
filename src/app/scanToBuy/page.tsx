@@ -88,10 +88,10 @@ export default function ScanToBuyPage() {
 
   const handlePurchase = () => {
     // Process the purchase
-    setScanResult({
-      ...scanResult,
+    setScanResult(prev => prev ? {
+      ...prev,
       purchased: true
-    })
+    } : null)
   }
 
   if (loading) {
@@ -195,9 +195,9 @@ export default function ScanToBuyPage() {
                       <Building className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900 text-lg">{scanResult.venue.name}</div>
-                      <div className="text-sm text-gray-600">{scanResult.venue.company}</div>
-                      <div className="text-sm text-gray-500">{scanResult.venue.location}</div>
+                      <div className="font-semibold text-gray-900 text-lg">{scanResult.venue?.name}</div>
+                      <div className="text-sm text-gray-600">{scanResult.venue?.company}</div>
+                      <div className="text-sm text-gray-500">{scanResult.venue?.location}</div>
                     </div>
                   </div>
                 </div>
@@ -205,21 +205,21 @@ export default function ScanToBuyPage() {
                 {/* Pass Details */}
                 <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">{scanResult.pass.name}</h3>
+                    <h3 className="text-lg font-semibold text-gray-900">{scanResult.pass?.name}</h3>
                     <div className="text-right">
                       <div className="text-2xl font-bold text-blue-600">
-                        {formatCurrency(scanResult.pass.price)}
+                        {formatCurrency(scanResult.pass?.price || 0)}
                       </div>
-                      <div className="text-sm text-gray-500">Valid for {scanResult.pass.validity}</div>
+                      <div className="text-sm text-gray-500">Valid for {scanResult.pass?.validity}</div>
                     </div>
                   </div>
                   
-                  <p className="text-gray-600 mb-4">{scanResult.pass.description}</p>
+                  <p className="text-gray-600 mb-4">{scanResult.pass?.description}</p>
                   
                   <div>
                     <h4 className="font-medium text-gray-900 mb-2">Benefits included:</h4>
                     <ul className="space-y-1">
-                      {scanResult.pass.benefits.map((benefit: string, index: number) => (
+                      {scanResult.pass?.benefits?.map((benefit: string, index: number) => (
                         <li key={index} className="flex items-center text-sm text-gray-600">
                           <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
                           {benefit}
