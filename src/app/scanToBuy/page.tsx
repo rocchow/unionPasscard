@@ -23,7 +23,22 @@ export default function ScanToBuyPage() {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [scanning, setScanning] = useState(false)
-  const [scanResult, setScanResult] = useState<any>(null)
+  const [scanResult, setScanResult] = useState<{
+    success: boolean;
+    venue?: {
+      name: string;
+      company: string;
+      location: string;
+    };
+    pass?: {
+      name: string;
+      description: string;
+      price: number;
+      validity: string;
+      benefits: string[];
+    };
+    error?: string;
+  } | null>(null)
 
   useEffect(() => {
     const loadData = async () => {
@@ -103,7 +118,7 @@ export default function ScanToBuyPage() {
             Scan to Buy Pass
           </h1>
           <p className="mt-2 text-gray-600">
-            Scan a venue's QR code to purchase their membership pass
+            Scan a venue&apos;s QR code to purchase their membership pass
           </p>
         </div>
 
@@ -118,7 +133,7 @@ export default function ScanToBuyPage() {
               Ready to Scan
             </h2>
             <p className="text-gray-600 mb-8">
-              Look for the venue's QR code and tap the button below to scan and see available passes
+              Look for the venue&apos;s QR code and tap the button below to scan and see available passes
             </p>
             
             <button

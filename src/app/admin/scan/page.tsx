@@ -21,7 +21,21 @@ export default function AdminScanPage() {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [loading, setLoading] = useState(true)
   const [scanning, setScanning] = useState(false)
-  const [scanResult, setScanResult] = useState<any>(null)
+  const [scanResult, setScanResult] = useState<{
+    success: boolean;
+    customer?: {
+      name: string;
+      email: string;
+      phone: string;
+      passes: Array<{
+        name: string;
+        company: string;
+        status: string;
+        expires: string;
+      }>;
+    };
+    error?: string;
+  } | null>(null)
 
   useEffect(() => {
     const loadData = async () => {

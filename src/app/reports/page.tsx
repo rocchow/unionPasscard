@@ -181,7 +181,7 @@ export default function ReportsPage() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Today's Revenue</p>
+                <p className="text-sm text-gray-600">Today&apos;s Revenue</p>
                 <p className="text-2xl font-bold text-gray-900">{formatCurrency(stats?.today_revenue || 0)}</p>
                 <p className="text-xs text-green-600 mt-1">↗ +{stats?.growth_rate}% vs yesterday</p>
               </div>
@@ -195,7 +195,7 @@ export default function ReportsPage() {
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Today's Transactions</p>
+                <p className="text-sm text-gray-600">Today&apos;s Transactions</p>
                 <p className="text-2xl font-bold text-gray-900">{stats?.today_transactions || 0}</p>
                 <p className="text-xs text-blue-600 mt-1">Avg: {formatCurrency(stats?.avg_transaction || 0)}</p>
               </div>

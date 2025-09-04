@@ -120,7 +120,7 @@ export default function SystemSettingsPage() {
     }
   }
 
-  const updateSetting = (key: keyof SystemSettings, value: any) => {
+  const updateSetting = (key: keyof SystemSettings, value: string | number | boolean) => {
     if (settings) {
       setSettings({
         ...settings,

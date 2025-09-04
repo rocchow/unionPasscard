@@ -5,8 +5,6 @@ import { usePathname } from 'next/navigation'
 import { useState, useEffect, useCallback } from 'react'
 import { 
   User, 
- 
-  QrCode, 
   LogOut,
   Menu,
   X,
