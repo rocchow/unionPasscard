@@ -8,7 +8,8 @@ import {
   History, 
   Wallet,
   ArrowRight,
-  Loader2
+  Loader2,
+  ScanLine
 } from 'lucide-react'
 import { getCurrentUser, type AuthUser } from '@/lib/auth'
 import { formatCurrency } from '@/lib/utils'
@@ -114,11 +115,11 @@ export default function DashboardPage() {
               <span className="text-sm">Show QR</span>
             </Link>
             <Link
-              href="/memberships/purchase"
+              href="/scanToBuy"
               className="flex-1 bg-white/10 hover:bg-white/20 rounded-xl px-4 py-3 text-center font-medium transition-colors active:scale-95"
             >
-              <Plus className="w-5 h-5 mx-auto mb-1" />
-              <span className="text-sm">Add Funds</span>
+              <ScanLine className="w-5 h-5 mx-auto mb-1" />
+              <span className="text-sm">Scan to Buy Pass</span>
             </Link>
           </div>
         </div>

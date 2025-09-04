@@ -124,7 +124,7 @@ export default function FooterNavigation() {
     // Admin mode navigation (4 icons + role switcher)
     const adminLinks = [
       { 
-        href: '/staff/scan', 
+        href: '/admin/scan', 
         label: 'Scan QR', 
         icon: ScanLine,
         color: 'text-green-600'

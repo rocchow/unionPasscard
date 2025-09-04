@@ -86,9 +86,7 @@ export default function Navigation() {
 
 
   const staffLinks = [
-    { href: '/reports', label: 'Reports', icon: Users },
-    { href: '/staff/scan', label: 'Scan QR', icon: QrCode },
-    { href: '/staff/transactions', label: 'Transactions', icon: BarChart3 },
+    { href: '/reports', label: 'Reports', icon: Users }
   ]
 
   const adminLinks = [
