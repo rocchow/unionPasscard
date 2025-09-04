@@ -11,7 +11,9 @@
     "type-check": "tsc --noEmit",
     "build-check": "npm run lint && npm run type-check && npm run build",
     "pre-commit": "npm run build-check",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "echo \"No tests specified\" && exit 0",
+    "commit": "./scripts/commit.sh",
+    "quick-commit": "./scripts/quick-commit.sh"
   },
   "dependencies": {
     "@supabase/auth-ui-react": "^0.4.7",
