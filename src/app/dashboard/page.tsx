@@ -66,30 +66,6 @@ export default function AdminDashboard() {
     monthlyRevenue: 45670.50
   }
 
-  const getAdminActions = () => {
-    const actions = []
-    
-    if (user?.role === 'staff' || user?.role === 'company_admin' || user?.role === 'super_admin') {
-      actions.push(
-        { href: '/staff/scan', label: 'Scan QR Codes', icon: QrCode, description: 'Process customer transactions', color: 'bg-blue-50 text-blue-600' },
-        { href: '/staff/transactions', label: 'Transaction History', icon: History, description: 'View all transactions', color: 'bg-green-50 text-green-600' }
-      )
-    }
-    
-    if (user?.role === 'company_admin' || user?.role === 'super_admin') {
-      actions.push(
-        { href: '/admin/users', label: 'Manage Users', icon: Plus, description: 'User management tools', color: 'bg-purple-50 text-purple-600' }
-      )
-    }
-    
-    if (user?.role === 'super_admin') {
-      actions.push(
-        { href: '/admin/settings', label: 'System Settings', icon: Wallet, description: 'Configure system', color: 'bg-orange-50 text-orange-600' }
-      )
-    }
-    
-    return actions
-  }
 
   return (
     <div className="px-4 py-6 sm:px-6 lg:px-8">
@@ -155,35 +131,12 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="mb-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {getAdminActions().map((action) => {
-              const Icon = action.icon
-              return (
-                <Link
-                  key={action.href}
-                  href={action.href}
-                  className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow group"
-                >
-                  <div className={`${action.color} p-3 rounded-lg mb-4 group-hover:scale-105 transition-transform`}>
-                    <Icon className="w-6 h-6" />
-                  </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{action.label}</h3>
-                  <p className="text-gray-600 text-sm">{action.description}</p>
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* Recent Activity */}
+        {/* Recent Transactions */}
         <div>
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Recent System Activity</h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Recent Transactions</h2>
           <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 text-center">
             <History className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-600 mb-4">No recent system activity</p>
+            <p className="text-gray-600 mb-4">No recent transactions</p>
             <Link
               href="/staff/transactions"
               className="text-blue-600 hover:text-blue-700 font-medium"
