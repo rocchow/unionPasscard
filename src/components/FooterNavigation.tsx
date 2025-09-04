@@ -228,20 +228,25 @@ export default function FooterNavigation() {
                 key="role-switch"
                 onClick={handleRoleSwitch}
                 className={cn(
-                  "flex flex-col items-center justify-center py-3 px-2 transition-colors",
-                  "hover:bg-gray-50 text-gray-500"
+                  "flex flex-col items-center justify-center py-2 px-2 mx-1 my-1 rounded-lg transition-all duration-200",
+                  "hover:bg-gray-100 text-gray-500 border border-gray-200 hover:border-gray-300",
+                  "hover:shadow-sm active:scale-95"
                 )}
               >
-                <Icon 
-                  className={cn(
-                    "w-6 h-6 mb-1",
-                    link.color
-                  )}
-                />
+                <div className="relative">
+                  <Icon 
+                    className={cn(
+                      "w-5 h-5 mb-1",
+                      link.color
+                    )}
+                  />
+                  {/* Small toggle indicator */}
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full opacity-60"></div>
+                </div>
                 <span 
                   className={cn(
                     "text-xs font-medium",
-                    "text-gray-500"
+                    "text-gray-600"
                   )}
                 >
                   {link.label}
