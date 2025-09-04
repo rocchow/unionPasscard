@@ -149,6 +149,40 @@ export default function FooterNavigation() {
       }
     ]
 
+    // Super admin gets additional permissions link
+    const superAdminLinks = [
+      { 
+        href: '/reports', 
+        label: 'Reports', 
+        icon: BarChart3,
+        color: 'text-orange-600'
+      },
+      { 
+        href: '/admin/transactions', 
+        label: 'All Transactions', 
+        icon: History,
+        color: 'text-purple-600'
+      },
+      { 
+        href: '/admin/scan', 
+        label: 'Scan QR', 
+        icon: ScanLine,
+        color: 'text-green-600'
+      },
+      { 
+        href: '/admin/permissions', 
+        label: 'Permissions', 
+        icon: ShieldCheck,
+        color: 'text-red-600'
+      },
+      { 
+        href: '/admin/users', 
+        label: 'User Manage', 
+        icon: Users,
+        color: 'text-blue-600'
+      }
+    ]
+
     // For customers, return customer links only
     if (user.role === 'customer') {
       return customerLinks
@@ -156,9 +190,10 @@ export default function FooterNavigation() {
 
     // For admin/staff users, return appropriate links based on current mode
     if (isAdminMode) {
-      // In admin mode, show admin links + switcher to user mode
+      // In admin mode, show appropriate admin links based on role + switcher to user mode
+      const links = user.role === 'super_admin' ? superAdminLinks : adminLinks
       return [
-        ...adminLinks,
+        ...links,
         {
           href: '#',
           label: 'Switch to User',
