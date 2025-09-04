@@ -1,12 +1,62 @@
--- Add company_id and venue_id to users table for primary association
-ALTER TABLE users ADD COLUMN company_id UUID REFERENCES companies(id);
-ALTER TABLE users ADD COLUMN venue_id UUID REFERENCES venues(id);
+-- Create the custom types if they don't exist
+DO $$ BEGIN
+    CREATE TYPE staff_role AS ENUM ('staff', 'manager');
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    CREATE TYPE company_role AS ENUM ('admin', 'manager');
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+-- Create user_venues table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.user_venues (
+  id uuid default uuid_generate_v4() primary key,
+  user_id uuid references public.users(id) on delete cascade,
+  venue_id uuid references public.venues(id) on delete cascade,
+  role staff_role not null,
+  created_at timestamp with time zone default now(),
+  unique(user_id, venue_id)
+);
+
+-- Create user_companies table if it doesn't exist
+CREATE TABLE IF NOT EXISTS public.user_companies (
+  id uuid default uuid_generate_v4() primary key,
+  user_id uuid references public.users(id) on delete cascade,
+  company_id uuid references public.companies(id) on delete cascade,
+  role company_role not null,
+  created_at timestamp with time zone default now(),
+  unique(user_id, company_id)
+);
+
+-- Enable RLS
+ALTER TABLE public.user_venues ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.user_companies ENABLE ROW LEVEL SECURITY;
+
+-- Add company_id and venue_id to users table for primary association (only if they don't exist)
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'users' AND column_name = 'company_id') THEN
+        ALTER TABLE public.users ADD COLUMN company_id UUID REFERENCES public.companies(id);
+    END IF;
+END $$;
+
+DO $$ 
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name = 'users' AND column_name = 'venue_id') THEN
+        ALTER TABLE public.users ADD COLUMN venue_id UUID REFERENCES public.venues(id);
+    END IF;
+END $$;
 
 -- Add indexes for better performance
-CREATE INDEX idx_users_company_id ON users(company_id);
-CREATE INDEX idx_users_venue_id ON users(venue_id);
-CREATE INDEX idx_user_companies_user_id ON user_companies(user_id);
-CREATE INDEX idx_user_venues_user_id ON user_venues(user_id);
+CREATE INDEX IF NOT EXISTS idx_users_company_id ON public.users(company_id);
+CREATE INDEX IF NOT EXISTS idx_users_venue_id ON public.users(venue_id);
+CREATE INDEX IF NOT EXISTS idx_user_venues_user_id ON public.user_venues(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_venues_venue_id ON public.user_venues(venue_id);
+CREATE INDEX IF NOT EXISTS idx_user_companies_user_id ON public.user_companies(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_companies_company_id ON public.user_companies(company_id);
 
 -- Create a view for user permissions that includes all associations
 CREATE OR REPLACE VIEW user_permissions AS
