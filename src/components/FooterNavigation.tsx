@@ -89,7 +89,7 @@ export default function FooterNavigation() {
   }
 
   // Determine current mode based on pathname
-  const isAdminMode = pathname.startsWith('/reports') || pathname.startsWith('/admin') || pathname.startsWith('/staff')
+  const isAdminMode = pathname.startsWith('/reports') || pathname.startsWith('/admin')
   
   // Navigation based on user role and current mode
   const getFooterLinks = () => {

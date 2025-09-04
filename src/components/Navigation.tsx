@@ -86,7 +86,7 @@ export default function Navigation() {
 
 
   const staffLinks = [
-    { href: '/staff', label: 'Staff Portal', icon: Users },
+    { href: '/reports', label: 'Reports', icon: Users },
     { href: '/staff/scan', label: 'Scan QR', icon: QrCode },
     { href: '/staff/transactions', label: 'Transactions', icon: BarChart3 },
   ]
@@ -112,8 +112,7 @@ export default function Navigation() {
       case 'super_admin':
         // Super admins get clean top nav - admin features moved to footer
         return [
-          { href: '/reports', label: 'Reports', icon: User },
-          { href: '/staff', label: 'Staff Portal', icon: Users }
+          { href: '/reports', label: 'Reports', icon: User }
         ]
       default:
         return [{ href: '/myPasses', label: 'My Passes', icon: User }]
