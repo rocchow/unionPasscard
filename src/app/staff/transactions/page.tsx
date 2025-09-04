@@ -76,7 +76,7 @@ export default function StaffTransactionsPage() {
       
       // Check if user has staff privileges
       if (!hasRole(currentUser.role, 'staff')) {
-        router.push('/dashboard')
+        router.push('/reports')
         return
       }
       

@@ -12,8 +12,7 @@ import {
   User,
   ScanLine,
   Users,
-  BarChart3,
-  Settings
+  BarChart3
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { getCurrentUser, type AuthUser } from '@/lib/auth'
@@ -90,7 +89,7 @@ export default function FooterNavigation() {
   }
 
   // Determine current mode based on pathname
-  const isAdminMode = pathname.startsWith('/dashboard') || pathname.startsWith('/admin') || pathname.startsWith('/staff')
+  const isAdminMode = pathname.startsWith('/reports') || pathname.startsWith('/admin') || pathname.startsWith('/staff')
   
   // Navigation based on user role and current mode
   const getFooterLinks = () => {
@@ -143,7 +142,7 @@ export default function FooterNavigation() {
         color: 'text-blue-600'
       },
       { 
-        href: '/dashboard', 
+        href: '/reports', 
         label: 'Reports', 
         icon: BarChart3,
         color: 'text-orange-600'
@@ -190,7 +189,7 @@ export default function FooterNavigation() {
       router.push('/app')
     } else {
       // Switch to admin mode
-      router.push('/dashboard')
+      router.push('/reports')
     }
   }
 

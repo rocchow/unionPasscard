@@ -4,15 +4,12 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { 
   Search, 
-  Filter, 
   Download, 
   Edit3, 
   RefreshCw,
   Eye,
   DollarSign,
-  Calendar,
   User,
-  Building,
   Loader2
 } from 'lucide-react'
 import { getCurrentUser, type AuthUser } from '@/lib/auth'
@@ -62,6 +59,7 @@ export default function AdminTransactionsPage() {
       }
       
       setUser(currentUser)
+      console.log('Admin transactions loaded for user:', currentUser.role)
       
       // Mock transaction data for demo
       setTransactions([

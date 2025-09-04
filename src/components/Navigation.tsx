@@ -112,7 +112,7 @@ export default function Navigation() {
       case 'super_admin':
         // Super admins get clean top nav - admin features moved to footer
         return [
-          { href: '/dashboard', label: 'Dashboard', icon: User },
+          { href: '/reports', label: 'Reports', icon: User },
           { href: '/staff', label: 'Staff Portal', icon: Users }
         ]
       default:
