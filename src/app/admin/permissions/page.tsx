@@ -9,7 +9,6 @@ import {
   Plus, 
   X, 
   Shield,
-  Edit,
   Trash2
 } from 'lucide-react'
 import { getCurrentUser, type AuthUser } from '@/lib/auth'
